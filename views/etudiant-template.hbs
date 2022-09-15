@@ -1,0 +1,166 @@
+{{!-- side nav start--}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="etudiant-title">
+    <h2>Liste des etudiants</h2>
+</div>
+
+<div class="options-etudiant">
+        <div class="show-etudiant">
+            <button class="ajouter-etudiant-btn">Ajouter Etudiant</button>
+            <button class="supprimer-etudiant-btn">supprimer Etudiant</button>
+            <button class="modifier-etudiant-btn">modifier Etudiant</button>
+            <button class="rechercher-etudiant-btn">Rechercher</button>
+        </div>
+        <div>
+            {{>notifications}}
+        </div>
+</div>
+{{!-- ajouter --}}
+<div class="nouv-etudiant">
+    <div class="inner">
+        <form action="/etudiants-ajt" method="POST" class="nouv-etudiant-form">
+            <label for="">Nom</label>
+            <input type="text" maxlength="20" name="nom" required>
+            <br>
+            <label for="">Prenom</label>
+            <input type="text" maxlength="20" name="prenom" required>
+            <br>
+            <label for="">Date naissance</label>
+            <input type="date" name="datenaissance" required>
+            <br>
+            <label for="">Filiere</label>
+            <select name="filiere" required>
+                {{#if filieresData.length}}
+                    {{#each filieresData}}
+                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                    {{/each}}
+                {{else}}
+                    <option>Pas de filiere...</option>
+                {{/if}}
+            </select>
+            <br>
+            <label for="">Annee</label>
+            <select name="annee" id="filiers" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <br>
+            <label for="">Telephone</label>
+            <input type="text" maxlength="10" minlength="10" name="tel" required>
+            <br>
+            <label for="">Adresse</label>
+            <input type="text" maxlength="80" name="adresse" required>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+</div>
+
+{{!-- modifier --}}
+<div class="modif-etudiant">
+    <div class="inner">
+        <button class="charger-btn-etd">Saisir le code Etudiant et cliquer ici pour charger ses informations</button>
+        <button class="effacer-btn-etd">Vider les champs</button>
+        <form action="/etudiants-mdf" method="POST" class="modif-etudiant-form">
+            <label for="">Code Etudiant</label>
+            <input type="text" maxlength="20" name="codeetudiant" required>
+            <br>
+            <label for="">Nom</label>
+            <input type="text" maxlength="20" name="nom" required>
+            <br>
+            <label for="">Prenom</label>
+            <input type="text" maxlength="20" name="prenom" required>
+            <br>
+            <label for="">Date naissance</label>
+            <input type="date" name="datenaissance" required>
+            <br>
+            <label for="">Filiere</label>
+            <select name="filiere" required>
+                {{#if filieresData.length}}
+                    {{#each filieresData}}
+                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            <br>
+            <label for="">Annee</label>
+            <select name="annee" id="filiers" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            </select>
+            <br>
+            <label for="">Telephone</label>
+            <input type="text" maxlength="10" minlength="10" name="tel" required>
+            <br>
+            <label for="">Adresse</label>
+            <input type="text" maxlength="80" name="adresse" required>
+            <br>
+            <input type="submit" value="modifier">
+        </form>
+    </div>
+</div>
+
+{{!-- supprimer --}}
+<div class="supp-etudiant">
+    <div class="inner">
+        <form action="/etudiants-sp" method="POST" class="supp-etudiant-form">
+            <label for="">code Etudiant</label>
+            <input type="text" maxlength="20" name="codeetudiant" required>
+            <br>
+            <input type="submit" value="supprimer">
+        </form>
+    </div>
+</div>
+
+{{!-- rechercher --}}
+<div class="rech-etudiant">
+    <div class="inner">
+        <form class="rech-etudiant-form">
+            <label for="">Tapez une informations pour chercher un etudiant</label>
+            <input type="text" maxlength="20" class="rech-etudiant-input" name="codeetudiant" required>
+            <br>
+        </form>
+    </div>
+</div>
+
+
+{{!-- liste des etudiants --}}
+<div class="table-container">
+    <table class="table-etudiants">
+        <tr>
+            <td>code Etudiant</td>
+            <td>Nom</td>
+            <td>Prenom</td>
+            <td>Date naissance</td>
+            <td>Filiere</td>
+            <td>Annee</td>
+            <td>Telephone</td>
+            <td>Adresse</td>
+            <td>Nom utilisateur</td>
+            <td>Mot de passe</td>
+        </tr>
+        {{#if etudiantsData.length}}
+            {{#each etudiantsData}}
+                <tr>
+                    <td>{{this.codeEtudiant}}</td>
+                    <td>{{this.nom}}</td>
+                    <td>{{this.prenom}}</td>
+                    <td>{{this.dateNaissance}}</td>
+                    <td>{{this.filiere}}</td>
+                    <td>{{this.annee}}</td>
+                    <td>{{this.telephone}}</td>
+                    <td>{{this.adresse}}</td>
+                    <td>{{this.utilisateur}}</td>
+                    <td>{{this.password}}</td>
+                </tr>
+            {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="10" style="text-align: center;">Pas d'etudiants</td>
+                </tr>
+        {{/if}}
+        {{!-- dynmic load goes here... --}}
+    </table>
+</div>

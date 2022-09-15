@@ -1,0 +1,27 @@
+{{!-- nav bar partial --}}
+{{>nav-bar}}
+{{!-- nav bar partial --}}
+
+{{!-- login form start--}}
+
+<div id="login">
+    <div class="container">
+        <div class="inner">
+            <div class="form-container">
+                {{>notifications}}
+                <div class="Log">
+                    <h3 class="login-title">Login</h3>
+                </div>
+                <form action="/login" method="POST" autocomplete="off">
+                    <label for="username">Nom utilisateur:</label>
+                    <input type="email" id="username" name="username" required>
+                    <label for="password">Mot de passe:</label>
+                    <input minlength="6" maxlength="15" type="password" id="password" name="password" required>
+                    <br>
+                    <input type="submit" id="submit" name="submit" value="Se connecter">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- login form end--}}

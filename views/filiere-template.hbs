@@ -1,0 +1,98 @@
+{{!-- side nav start--}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="filiere-title">
+    <h2>Liste des filieres</h2>
+</div>
+
+<div class="options-filiere">
+        <div class="show-filiere">
+            <button class="ajouter-filiere-btn">Ajouter Filiere</button>
+            <button class="supprimer-filiere-btn">supprimer Filiere</button>
+            <button class="modifier-filiere-btn">modifier Filiere</button>
+        </div>
+        <div>
+            {{>notifications}}
+        </div>
+</div>
+
+{{!-- ajouter --}}
+<div class="nouv-filiere">
+    <div class="inner">
+        <form action="/filieres-ajt" method="POST" class="nouv-filiere-form">
+            <label for="">Code filiere</label>
+            <input type="text" maxlength="10" name="codefiliere" required>
+            <br>
+            <label for="">Nom filiere</label>
+            <input type="text" maxlength="100" name="nomfiliere" required>
+            <br>
+            <label for="">Abreviation</label>
+            <input type="text" maxlength="10" name="abreviation" required>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+</div>
+
+{{!-- modifier --}}
+<div class="modif-filiere">
+    <div class="inner">
+        <button class="charger-btn-fl">Saisir le code du Filiere et cliquer ici pour charger ses informations</button>
+        <button class="effacer-btn-fl">Vider les champs</button>
+        <form action="/filieres-mdf" method="POST" class="modif-filiere-form">
+            <label for="">Code filiere</label>
+            <input type="text" maxlength="20" name="codefiliere" required>
+            <br>
+            <label for="">Nom filiere</label>
+            <input type="text" maxlength="100" name="nomfiliere" required>
+            <br>
+            <label for="">abrevition filiere</label>
+            <input type="text" maxlength="10" name="abreviation" required>
+            <input type="submit" value="modifier">
+        </form>
+    </div>
+</div>
+
+{{!-- supprimer --}}
+<div class="supp-filiere">
+    <div class="inner">
+        <div class="danger-msg">
+            <h4 style="color: red;text-align:center;padding:5px;">
+                Attention ! La suppression d'une filiere causera la suppression de tout les associations avec les modules
+            </h4>
+        </div>
+        <form action="/filieres-sp" method="POST" class="supp-filiere-form">
+            <label for="">Code Filiere</label>
+            <input type="text" maxlength="20" name="codefiliere" required>
+            <br>
+            <input type="submit" value="supprimer">
+        </form>
+    </div>
+</div>
+
+
+{{!-- liste des filieres --}}
+<div class="table-container">
+    <table class="table-filieres">
+        <tr>
+            <td>Code Filiere</td>
+            <td>Nom Filiere</td>
+            <td>Abreviation</td>
+        </tr>
+        {{#if filieresData.length}}
+            {{#each filieresData}}
+            <tr>
+                <td>{{this.codeFiliere}}</td>
+                <td>{{this.nomFiliere}}</td>
+                <td>{{this.abrvFiliere}}</td>
+            </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td colspan="3" style="text-align: center;">Pas de filières</td>
+            </tr>
+        {{/if}}
+        {{!-- dynmic load goes here... --}}
+    </table>
+</div>

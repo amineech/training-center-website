@@ -1,0 +1,56 @@
+{{!-- side nav start --}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="Msg-header">
+    <h2>Messages reçus </h2>
+</div>
+
+{{!-- notification msg --}}
+    {{>notifications}}
+{{!-- notification msg --}}
+
+<div class="by-time">
+    <label>Recherche par Date de reception :&nbsp;</label>
+    <input type="date" class="date-recep">
+    <br>
+    <input type="button" value="Rechercher" class="rech-date-btn">
+    <input type="button" value="Annuler" class="annuler-btn">
+</div>
+
+{{!-- messages content start --}}
+<div class="messages-container">
+        {{#if messagesData.length}}
+            {{#each messagesData}}
+                <div class="message-content">
+                    <div class="person-fullname">
+                        <h2 class="fullname">Nom complet<br>&nbsp;&nbsp;<span>{{this.nom}}&nbsp;{{this.prenom}}</span></h2>
+
+                    </div>
+                    <div class="other-infos">
+                        <h3 class="email">Email :<br><span>{{this.email}}</span></h3>
+                        <h4 class="sent-date">Date de reception : <span>{{this.created_at}}</span></h4>
+                    </div>
+                    <div class="msg-content">
+                        <h4>Contenu du message:</h4>
+                        <br>
+                        <p>
+                            {{this.msgContent}}
+                        </p>
+                    </div>
+                    <div class="msg-delete-form">
+                        <form action="/delete-msg" method="POST">
+                            <input type="text" value="{{this.idMessage}}" name="idMessage" hidden>
+                            <input type="submit" value="Supprimer">
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="zero-messages">
+                <h4>Pas de messages pour l'instant</h4>
+            </div>
+    {{/if}}
+</div>
+
+

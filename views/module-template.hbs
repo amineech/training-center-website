@@ -1,0 +1,117 @@
+{{!-- side nav start--}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="module-title">
+    <h2>Liste des modules</h2>
+</div>
+
+<div class="options-module">
+        <div class="show-module">
+            <button class="ajouter-module-btn">Ajouter Module</button>
+            <button class="supprimer-module-btn">supprimer Module</button>
+            <button class="modifier-module-btn">modifier Module</button>
+            <button class="rechercher-module-filiere-annee-btn">Rechercher</button>
+        </div>
+        <div>
+            {{>notifications}}
+        </div>
+</div>
+
+{{!-- ajouter --}}
+<div class="nouv-module">
+    <div class="inner">
+        <form action="/modules-ajt" method="POST" class="nouv-module-form">
+            <label for="">Code module</label>
+            <input type="text" maxlength="10" name="codemodule" required>
+            <br>
+            <label for="">Nom module</label>
+            <input type="text" maxlength="80" name="nommodule" required>
+            <br>
+            <label for="">Annee</label>
+            <select name="annee" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+</div>
+
+{{!-- modifier --}}
+<div class="modif-module">
+    <div class="inner">
+        <button class="charger-btn-mdl">Saisir le code de module et cliquer ici pour charger ses informations</button>
+        <button class="effacer-btn-mdl">Vider les champs</button>
+        <form action="/modules-mdf" method="POST" class="modif-module-form">
+            <label for="">Code module</label>
+            <input type="text" maxlength="10" name="codemodule" required>
+            <br>
+            <label for="">Nom module</label>
+            <input type="text" maxlength="80" name="nommodule" required>
+            <br>
+            <label for="">Annee</label>
+            <select name="annee" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <input type="submit" value="Modifier">
+        </form>
+    </div>
+</div>
+
+{{!-- supprimer --}}
+<div class="supp-module">
+    <div class="inner">
+        <form action="/modules-sp" method="POST" class="supp-module-form">
+            <label for="">Code module</label>
+            <input type="text" maxlength="10" name="codemodule" required>
+            <br>
+            <input type="submit" value="supprimer">
+        </form>
+    </div>
+</div>
+
+{{!-- rechercher par filiere et annee--}}
+<div class="rech-module rech-module-filiere-annee">
+    <div class="inner">
+        <form class="rech-module-form">
+            <label for="">Selectionnez une annee</label>
+            <select class="select-annee-search" name="modules-annee" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            {{!-- to cancel the search results  --}}
+        </form>
+        <div class="cancel-btn">
+            <button>Annuler</button>
+        </div>
+    </div>
+</div>
+
+
+
+{{!-- liste des modules --}}
+<div class="table-container">
+    <table class="table-modules">
+        <tr>
+            <td>Code module</td>
+            <td>Nom module</td>
+            <td>Annee</td>
+        </tr>
+        {{#if modulesData.length}}
+            {{#each modulesData}}
+                <tr>
+                    <td>{{this.codeModule}}</td>
+                    <td>{{this.nomModule}}</td>
+                    <td>{{this.annee}}</td>
+                </tr>
+            {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="3" style="text-align: center;">Pas de modules</td>
+                </tr>
+        {{/if}}
+        {{!-- dynamic load goes here... --}}
+    </table>
+</div>

@@ -1,0 +1,76 @@
+{{!-- nav bar start --}}
+    {{>nav-bar}}
+{{!-- nav bar start --}}
+
+<div id="liste-modules">
+    <img src="../images/mdl-bg.jpg">
+    <div class="inner">
+        {{#if modulesData.length}}
+            <div class="form-container">
+                <form action="/search-modules" method="POST">
+                    <label>Filiere: </label>
+                    <select name="codefiliere" class="filiere-slc">
+                        {{#if filieresData.length}}
+                            {{#each filieresData}}
+                                <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option>liste vide...</option>
+                        {{/if}}
+                    </select>
+                    <label>Annee: </label>
+                    <select name="annee" id="annee-slc" class="annee-slc">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+            <div class="inner-content">
+                <div class="search-infos">
+                    {{!-- get 'nomFiliere of the required 'filiere' --}}
+                    <h3>Filiere : <span>{{modulesData.[0].nomFiliere}}</span></h3>
+                    {{!-- 'annee' from local variables in response res --}}
+                    <h3>Annee : <span>{{annee}}</span></h3>
+                </div>
+                <div class="list-content">
+                    {{!-- if else on two arrays, one for all modules(if no filter) and ne for filtered modules(if filter) and ofcourse css and html structure--}}
+                    {{#each modulesData}}
+                        <h4>{{this.nomModule}}</h4>
+                    {{/each}}
+                </div>
+            </div>
+        {{else}}
+            <div class="form-container">
+                <form action="/search-modules" method="POST">
+                    <div class="form-inner">
+                        <div class="opt1">
+                            <label>Filiere: </label>
+                            <select name="codefiliere" class="filiere-slc">
+                                {{#if filieresData.length}}
+                                    {{#each filieresData}}
+                                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                                    {{/each}}
+                                {{else}}
+                                    <option>liste vide...</option>
+                                {{/if}}
+                            </select>
+                        </div>
+                        <div class="opt2">
+                            <label>Annee: </label>
+                            <select name="annee" id="annee-slc" class="annee-slc">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="submit" value="Rechercher">
+                </form>
+                <div style="background:none;width: 100%;text-align:center;margin-top:40px;" class="search-infos">
+                    <h3 class="empty-h3" >Selectionner vos choix et explorer les modules disponibles</h3>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+

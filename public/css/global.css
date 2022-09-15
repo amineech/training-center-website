@@ -1,0 +1,111 @@
+/* Variables Start */
+:root{
+    /* variables goes here... */
+    --main-blue:#85C1E9;
+    --lightgreen:#A3E4D7;
+    --m-white:#FBFCFC;/*#F7F9F9*/
+    --darkblue:#21618C;
+    --black: #000000;
+    --header-gradient:linear-gradient(to right, var(--main-blue), var(--lightgreen));
+    --header-gradient-btm:linear-gradient(to bottom, var(--main-blue), var(--lightgreen));
+    --white:#FFFFFF;
+    --lightgray:#ABB2B9;
+    --bgdgreen:#C4F3AD;
+    --attrblue:#315399;
+    --lightred: #FF4F29;
+
+    /* spacing variables */
+    --main-padding:20px;
+    --main-margin:20px;
+/* Variables End */
+}
+/* Global Rules Start*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a { text-decoration: none; }
+ul { list-style-type: none; } 
+html { scroll-behavior: smooth; }
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+table, tr, td{
+    border-collapse: collapse;
+}
+table{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 2480px;
+    table-layout: auto;
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+}
+select:focus,
+input:focus,
+textarea:focus{
+    box-shadow: 0px 0px 2px 0px var(--darkblue);
+    transition: box-shadow 0.3s;
+}
+tr:first-child td{
+    font-size: 20px;
+    font-weight: 800;
+    padding: 20px;
+    background: var(--lightgreen);
+    color: var(--darkblue);
+    border-right: 1px solid var(--darkblue);
+    border-left: 1px solid var(--darkblue);
+}
+table tr:not(:first-child):nth-child(odd){
+    background: var(--m-white);
+    color: var(--attrblue);
+}
+table tr:not(:first-child) td{
+    width: fit-content;
+    padding: 20px;
+    color: var(--attrblue);
+    letter-spacing: 1px;
+    font-weight: 600;
+    border-right: 1px solid var(--darkblue);
+    border-left: 1px solid var(--darkblue);
+}
+
+.table-container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    padding: 50px 0;
+}
+.container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--main-padding);
+    padding-right: var(--main-padding);
+}
+/* Small */
+@media (min-width:768px){
+    .container{
+        width: 750px;
+    }
+}
+/* Medium */
+@media (min-width:992px){
+    .container{
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width:1200px){
+    .container{
+        width: 1170px;
+    }
+}
+/* Global Rules End */
+
+/* styling Start */
+
+
+/* Styling End */

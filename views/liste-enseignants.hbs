@@ -1,0 +1,61 @@
+{{!-- nav bar start --}}
+    {{>nav-bar}}
+{{!-- nav bar start --}}
+
+<div id="liste-enseignants">
+    <img src="../images/mdl-bg.jpg">
+    <div class="inner">
+        {{#if enseignantsData.length}}
+            <div class="form-container">
+                <form action="/search-enseignants" method="POST">
+                    <label>Selectionner module</label>
+                    <select name="module" class="module">
+                        {{#if modulesData.length}}
+                            {{#each modulesData}}
+                                <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option>Liste vide...</option>
+                        {{/if}}
+                    </select>
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+            <div class="inner-content">
+                <div class="module-infos">
+                    <h4>{{enseignantsData.[0].nomModule}}</h4>
+                </div>
+                {{#each enseignantsData}}
+                    <div class="enseignant">
+                        <div class="image">
+                            {{!-- image de profil(avatar) en arriere plan --}}
+                        </div>
+                        <div class="ens-infos">
+                            <h6 class="first">{{this.nom}}&nbsp;{{this.prenom}}</h6>
+                            <h6 class="second">Email :&nbsp;{{this.email}}</h6>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="form-container">
+                <form action="/search-enseignants" method="POST">
+                    <label>Selectionner module</label>
+                    <select name="module" class="module">
+                        {{#if modulesData.length}}
+                            {{#each modulesData}}
+                                <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option>Liste vide...</option>
+                        {{/if}}
+                    </select>
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+            <div class="pasdonnees">
+                <h4>Liste vide...veuillez selectionner un module</h4>
+            </div>
+        {{/if}}
+    </div>
+</div>

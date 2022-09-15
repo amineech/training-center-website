@@ -1,0 +1,55 @@
+
+
+{{!-- come back button --}}
+<div class="back">
+    <a href="/espace-enseignant">Retourner</a>
+</div>
+
+
+
+
+{{!-- demande form start --}}
+<div id="demande-main">
+    <div class="container">
+        <div class="inner">
+            <div class="Title">
+                <h2>Formulaire de demande</h2>
+            </div>
+            {{!-- notification start --}}
+            {{>notifications}}
+            {{!-- notification end --}}
+            <div class="form-container">
+                <form action="/envoie-demande-enseignant" method="POST">
+                    <div class="fullname">
+                        <div>
+                            <label>Nom: </label>
+                            <input type="text" name="nom" value="{{enseignantInfos.nom}}" maxlength="20" required readonly>
+                        </div>
+                        <div>
+                            <label>Prenom: </label>
+                            <input type="text" name="prenom" value="{{enseignantInfos.prenom}}" maxlength="20" required readonly>
+                        </div>
+                    </div>
+                    <div class="code-titre">
+                        <div>
+                            <label>Code etudiant: </label>
+                            <input name="codeenseignant" value="{{enseignantInfos.codeEnseignant}}" type="text" maxlength="15" required readonly>
+                        </div>
+                        <div>
+                            <label>Titre de demande</label>
+                            <input name="objet" type="text" maxlength="60" required>
+                        </div>
+                    </div>
+                    <div class="area">
+                        <label>Contenu de demande: </label>
+                        <textarea placeholder="Specifier votre demande ici..." name="contenu" cols="30" rows="7" maxlength="300" required></textarea>
+                    </div>
+                    <div class="valider">
+                        <input type="submit" value="Envoyer" class="env-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- demande form end --}}

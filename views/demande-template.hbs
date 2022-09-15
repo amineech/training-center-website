@@ -1,0 +1,91 @@
+{{!-- side nav start --}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="demande-header">
+    <h2>Demandes reçus </h2>
+</div>
+
+<div class="rech-demande">
+    <button class="rech-dmd-date">Rechercer par date</button>
+    <button class="rech-dmd-statut">Rechercer par statut</button>
+</div>
+
+{{!-- recherche par statut --}}
+<div class="rech-demande-par-statut">
+    <label>Selectionner une valeur</label>
+    <select class="statut-select">
+        <option value="Confirmé">Confirmé</option>
+        <option value="En attente">En attente</option>
+    </select>
+    <div class="btns">
+        <button class="rechercher">Rechercher</button>
+        <button class="annuler">Annuler</button>
+    </div>
+</div>
+
+{{!-- recherche par date --}}
+<div class="rech-demande-par-date">
+    <label>Saisir une date</label>
+    <input type="date" required>
+    <div class="btns">
+        <button class="rechercher">Rechercher</button>
+        <button class="annuler">Annuler</button>
+    </div>
+</div>
+{{!-- notifications start --}}
+    <div style="text-align: center;">
+        {{>notifications}}
+    </div>
+{{!-- notifications end --}}
+
+{{!-- table des demandes start  --}}
+<div class="table-container">
+    <table class="table-demandes">
+        <tr>
+            <td>Nom complet</td>
+            <td>Code</td>
+            <td>Date de reception</td>
+            <td>Objet</td>
+            <td>Contenu</td>
+            <td>Statut</td>
+            <td>Date prevu de recuperation</td>
+        </tr>
+        {{#if demandesData.length}}
+            {{#each demandesData}}
+                <tr>
+                    <td>{{this.nom}}&nbsp;{{this.prenom}}</td>
+                    <td>{{this.code}}</td>
+                    <td>{{this.created_at}}</td>
+                    <td>{{this.objetDemande}}</td>
+                    <td>{{this.contentDemande}}</td>
+                    {{#if this.status}}
+                    {{!-- demande confirmé --}}
+                        <td style="text-align: center;">
+                            <button style="background: #28B463;color:white;">Confirmé</button>
+                        </td>
+                        <td>{{this.dateRecuperation}}</td>
+                    {{else}}
+                        {{!-- demande en attente --}}
+                        <td style="text-align: center;">
+                            <button style="background: orange;color:white;">En attente</button>
+                        </td>
+                        <td>
+                            {{!-- confirmer date de recuperation de demande --}}
+                            <form action="/recuperation-date" method="POST">
+                                    <input type="date" name="daterecuperation" required>
+                                    <input type="text" name="iddmd" value="{{this.idDemande}}" hidden>
+                                    <input type="submit" value="Confirmer demande">
+                            </form>
+                        </td>
+                    {{/if}}
+                </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td colspan="7" style="text-align:center;">Pas de demandes</td>
+            </tr>
+        {{/if}}
+    </table>
+</div>
+{{!-- table des demandes end --}}

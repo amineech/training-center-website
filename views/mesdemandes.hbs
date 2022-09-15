@@ -1,0 +1,47 @@
+{{!-- paths to css files and jquery --}}
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/notifications.css">
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+</head>
+<div class="back">
+    <a href="/espace-etudiant">Retourner</a>
+</div>
+
+{{!-- liste dem mes demandes start --}}
+    <div id="mesdemandes">
+        <div class="inner">
+            <div class="content">
+                {{#if processedDemandes.length}}
+                    {{#each processedDemandes}}
+                        <div class="dmd">
+                            <div class="infos-dmd">
+                                <h4 class="obj-dmd">Objet :&nbsp;{{this.objetDemande}}</h4>
+                                <h4 class="date">Date de demande :&nbsp;{{this.created_at}}</h4>
+                            </div>
+                            <div class="status-demande">
+                                <p>Contenu : &nbsp;{{this.contentDemande}}</p>
+                                {{#if this.status}}
+                                    <h4 class="confirme">Statut :&nbsp;confirme</h4>
+                                    <h4 class="date-recup">Vous pouvez recuperer le contenu de votre demande a partir de&nbsp;{{this.dateRecuperation}}</h4>
+                                {{else}}
+                                    <h4 class="enattente">Statut :&nbsp;En attente</h4>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                <div>
+                    <h2 style="text-align: center;color:red;font-size:30px;font-weight:400;">
+                        Pas de demandes...
+                    </h4>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{!-- liste dem mes demandes end --}}
+
+{{!-- js scripts --}}
+<script type="text/javascript" src="/js/front-main.js"></script>

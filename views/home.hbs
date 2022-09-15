@@ -1,0 +1,136 @@
+{{!-- intro header start --}}
+<section id="intro">
+    <div class="top-header">
+        <a href="/dashboard" class="admin-link">Espace Admin</a>
+    </div>
+    {{!-- transparent nav bar start --}}
+        {{>nav-bar-transparent}}
+    {{!-- transparent nav bar end --}}
+</section>
+{{!-- intro header end --}}
+
+
+
+{{!-- presentation start --}}
+<section id="presentation">
+    <div class="container">
+        <div class="inner">
+            <div class="Image">
+                <img src="../../images/about.jpg" alt="computers">
+            </div>
+            <div class="texts">
+                <h2>Qui sommes-nous ?</h3>
+                <p class="prg">
+                    Nous sommes un centre de formation professionnelle specialisée dans les domaines des 
+                    NTIC(nouvelles technologies d'informations et de communications). On forme chaque année
+                    plusieurs techniciens spécialisés dans différent domaines technologiques.
+                </p>
+                <a href="/apropos">Lire plus...</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{!-- presentation end --}}
+
+{{!-- pourquoi nous start--}}
+<section id="pourquoi-nous">
+    <div class="container">
+        <div class="inner">
+            <div class="texts">
+                <h2>Pourquoi-nous ?</h3>
+                <p class="prg">
+                    Notre centre à pour objet de former des téchniciens specialisés (Bac+2) dans differents domaines technologiques.
+                    Aprés l'obtention du diplome, nos lauréats ont le droit à une insertion professionnelle directe ainsi que la poursuite
+                    des études supérieures(licence professionnelle, master professionnel...)
+                </p>
+            </div>
+            <div class="Image">
+                <img src="../../images/tech-img.jpg" alt="computers">
+            </div>
+
+        </div>
+    </div>
+</section>
+{{!-- pourquoi nous end--}}
+
+{{!-- filieres start --}}
+<section id="filieres">
+    <div class="container">
+        <div class="inner">
+            <div class="right-icon">
+                <span>!!</span>
+            </div> 
+            <div class="left-icon">
+                <span>!!</span>
+            </div>         
+            <div class="title">
+                <h3>{{titre}}</h3>
+            </div>   
+            <div class="filieres-container">
+                {{#if filieresData.length}}
+                    {{#each filieresData}}
+                        <div class="filiere">
+                            <h3>{{this.nomFiliere}}</h3>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <div class="filiere">
+                        <p>Filieres disponible</p>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+{{!-- filieres end --}}
+
+{{!-- chiffres start --}}
+<div id="enchiffres">
+    <div class="container">
+        <div class="inner">
+            <div class="Title">
+                <h2><span>Centre NTCI</span> en chiffres</h2>
+            </div>
+            <div class="sections">
+                <div class="nb-filieres nbs"> 
+                    <div class="Image">
+                        <img src="../images/filiere.jpg" alt="filieres">
+                    </div>
+                    <div class="texts">
+                        {{#if filieresData}}
+                            <h4>{{filieresData.length}} filières dans les domaines des NTIC </h4>
+                        {{else}}
+                            <h4>Des filières très demandé dans le marché du travail</h4>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="nb-eneignants nbs">
+                    <div class="Image">
+                        <img src="../images/prof.jpg" alt="enseignants">
+                    </div>
+                    <div class="texts">
+                        {{#if enseignantsData}}
+                            <h4>{{enseignantsData.length}} enseignants a votre disposition tout le temps</h4>
+                        {{else}}
+                            <h4>Des enseignants a votre disposition tout le temps</h4>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="nb-salles nbs">
+                    <div class="Image">
+                        <img src="../images/computers.jpg" alt="Salles">
+                    </div>
+                    <div class="texts">
+                        <h4>plus de 10 salles bien équipé a votre disposition pour améliorer vos compétences techniques</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- chiffres end --}}
+
+{{!-- footer start --}}
+{{>footer}}
+{{!-- footer end --}}

@@ -1,0 +1,169 @@
+/* Variables Start */
+:root{
+    /* colors */
+    --main-blue:#85C1E9;
+    --lightgreen:#A3E4D7;
+    --m-white:#F7F9F9;
+    --darkblue: #21618C;
+    --black: #000000;
+    --header-gradient:linear-gradient(to right, var(--main-blue), var(--lightgreen));
+    --white:#FFFFFF;
+    --lightgray:#ABB2B9;
+    --agreen: #1E8449;
+    --darkgreen: #317773;
+    /* spacing variables */
+    --main-padding:20px;
+    --main-margin:20px;
+/* Variables End */
+}
+
+/* scale message animation */
+@keyframes scale-msg{
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    } to {
+        opacity: 1;
+        transform:  scale(1);
+    } 
+}
+
+/* message contact form start */
+.Message-contact{
+    color: var(--darkblue);
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    animation-duration: 1s;
+    animation-name: scale-msg;
+}
+/* message contact form end */
+
+/* messages etudiant start */
+.message-etudiant{
+    color: var(--darkblue);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* messsages etudiant end */
+
+/* messages filiere start */
+.message-filiere{
+    color: var(--darkblue);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* messsages filiere end */
+
+/* messages modules start */
+.message-module{
+    color: var(--darkblue);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* messages modoules end */
+
+/* messages enseignnts start */
+.message-enseignant{
+    color: var(--darkblue);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* messages enseignants end */
+
+/* message supprime de 'messages' page start*/
+.message-message{
+    color: rgb(211, 82, 82);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+/* message supprime de 'messages' page end*/
+
+/* message supprime de 'demandes' page start*/
+.message-demande{
+    color: rgb(211, 82, 82);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+/* message supprime de 'demandes' page end*/
+
+/* message Association start */
+.message-association{
+    color: var(--darkblue);
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* message Association end */
+
+/* message login start */
+.message-login{
+    color: rgb(211, 82, 82);
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    animation-duration: 1s;
+    animation-name: scale-msg;
+}
+/* message login end */
+
+/* message identifier start */
+.message-identifier{
+    color: var(--darkblue);
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    animation-duration: 1s;
+    animation-name: scale-msg;
+}
+/* message identifier end */
+
+/* messages actualites start */
+.message-actualite{
+    color: var(--darkblue);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+/* messsages actualites end */
+
+/* message envoie demande start */
+.message-env-demande{
+    color: var(--darkgreen);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    animation-duration: 1s;
+    animation-name: scale-msg;
+}
+/* message envoie demande end */
+
+/* message enseignant start*/
+.msg-enseignant{
+    color: var(--darkgreen);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    animation-duration: 1s;
+    animation-name: scale-msg;
+}
+/* message enseignant end*/

@@ -1,0 +1,57 @@
+{{!-- paths to css files and jquery --}}
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/notifications.css">
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+</head>
+<div class="back">
+    <a href="/espace-enseignant">Retourner</a>
+</div>
+
+{{!-- message --}}
+<div>
+    {{>notifications}}
+</div>
+
+{{!-- display documents --}}
+
+<div class="docs-table">
+    <div class="table-container">
+        <table>
+            <tr>
+                <td>Document</td>
+                <td>Filiere</td>
+                <td>Annee</td>
+                <td>Date de publication</td>
+                <td>Actions</td>
+            </tr>
+            {{#if docsData.length}}
+                {{#each docsData}}
+                    <tr>
+                        <td>{{this.document}}</td>
+                        <td>{{this.filiere}}</td>
+                        <td>{{this.annee}}</td>
+                        <td>{{this.created_at}}</td>
+                        <td>
+                            {{!-- pour le suppression d'un document --}}
+                            <form class="frm1" action="/supprimer-doc" method="POST">
+                                <input type="text" value="{{this.idDoc}}" name="docId" hidden>
+                                <input type="text" value="{{this.document}}" name="doc" hidden>
+                                <input type="submit" value="Supprimer">
+                            </form>
+                            {{!-- pour le telechargement des documents --}}
+                            <form class="frm2" action="/download/{{this.idDoc}}">
+                                <input type="submit" value="Telecharger">
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="5">Pas de fichier...</td>
+                </tr>
+            {{/if}}
+        </table>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+{{!-- side nav start--}}
+{{>side-nav}}
+{{!-- side nav end--}}
+
+{{!-- page's title start--}}
+<div class="asc-title">
+    <h2>Controle des associations</h2>
+</div>
+{{!-- page's title end--}}
+
+{{!-- notification start--}}
+<div class="association-page-notification">
+    {{>notifications}}
+</div>
+{{!-- notification end--}}
+
+{{!-- show-hide forms start--}}
+<div class="association-control-panel">
+    <button class="associer-btn">Ajouter une association</button>
+    <button class="supprimer-btn">Supprimer une association</button>
+    <button class="rechercher-par-filiere-btn">Rechercher par filiere</button>
+    <button class="rechercher-par-module-btn">Rechercher par module</button>
+</div>
+{{!-- show-hide forms end--}}
+
+{{!-- formulaire d'ajout d'une association --}}
+<div class="association-panel association-module-filiere" id="panel1">
+    <div class="inner">
+        <form class="association-form" method="POST" action="/association-ajt">
+            {{!-- modules --}}
+            <label for="">Selectionnez un module</label>
+            <select class="select-association-module" name="module" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            {{!-- filieres --}}
+            <label for="">Selectionner une filiere</label>
+            <select class="select-association-filiere" name="filiere" required>
+                {{#if filieresData.length}}
+                    {{#each filieresData}}
+                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            <input type="submit" value="Associer">
+        </form>
+    </div>
+</div>
+
+{{!-- formulaire de suppression d'une association --}}
+<div class="association-panel suppression-module-filiere" id="panel2">
+    <div class="inner">
+        <form class="association-form" method="POST" action="/association-sp">
+            {{!-- modules --}}
+            <label for="">Selectionnez un module</label>
+            <select class="select-association-module" name="module" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            {{!-- filieres --}}
+            <label for="">Selectionner une filiere</label>
+            <select class="select-association-filiere" name="filiere" required>
+                {{#if filieresData.length}}
+                    {{#each filieresData}}
+                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            <input type="submit" value="Supprimer">
+        </form>
+    </div>
+</div>
+
+{{!-- recherche par filiere --}}
+<div class="rech-assc rech-assc-filiere">
+    <div class="inner">
+        <form class="rech-assc-form">
+            <label for="">Selectionnez une filiere</label>
+            <select class="select-flr" required>
+                {{#if filieresData}}
+                    {{#each filieresData}}
+                        <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            {{!-- to cancel the search results  --}}
+        </form>
+        <div class="cancel-btn">
+            <button>Annuler</button>
+        </div>
+    </div>
+</div>
+
+{{!-- recherche par module --}}
+<div class="rech-assc rech-assc-module">
+    <div class="inner">
+        <form class="rech-assc-form">
+            <label for="">Selectionnez un module</label>
+            <select class="select-mdl" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            {{!-- to cancel the search results  --}}
+        </form>
+        <div class="cancel-btn">
+            <button>Annuler</button>
+        </div>
+    </div>
+</div>
+
+{{!-- table des associations --}}
+<div class="table-container">
+    <table class="table-associations">
+
+        <tr>
+            <td>Code module</td>
+            <td>Nom module</td>
+            <td>Code filiere</td>
+            <td>Nom filiere</td>
+            <td>Annee</td>
+        </tr>
+       {{#if filiereModulesData.length}}
+            {{#each filiereModulesData}}
+                <tr>
+                    <td>{{this.codeModule}}</td>
+                    <td>{{this.nomModule}}</td>
+                    <td>{{this.codeFiliere}}</td>
+                    <td>{{this.nomFiliere}}</td>
+                    <td>{{this.annee}}</td>
+                </tr>
+            {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="5" style="text-align: center;">Pas d'associations</td>
+                </tr>
+       {{/if}}
+    </table>
+</div>

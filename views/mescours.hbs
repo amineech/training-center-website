@@ -1,0 +1,42 @@
+{{!-- paths to css files and jquery --}}
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/notifications.css">
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+</head>
+<div class="back">
+    <a href="/espace-etudiant">Retourner</a>
+</div>
+
+{{!-- display documents --}}
+
+<div class="docs-table">
+    <div class="table-container">
+        <table>
+            <tr>
+                <td>Document</td>
+                <td>Date de publication</td>
+                <td>Actions</td>
+            </tr>
+            {{#if docsData.length}}
+                {{#each docsData}}
+                    <tr>
+                        <td>{{this.document}}</td>
+                        <td>{{this.created_at}}</td>
+                        <td>
+                            {{!-- pour le telechargement des documents --}}
+                            <form class="frm2" action="/download-document/{{this.idDoc}}">
+                                <input type="submit" value="Telecharger">
+                            </form>
+                        </td>
+                    </tr> 
+                {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="3">Pas de documents...</td>
+                </tr>
+            {{/if}}
+        </table>
+    </div>
+</div>

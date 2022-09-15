@@ -1,0 +1,44 @@
+<div class="title-act">
+    <div class="in-t">
+        <h1>Fil&nbsp;&nbsp;d'actualites</h1>
+    </div>
+</div>
+
+{{!-- nav bar start --}}
+{{>nav-bar}}
+{{!-- nav bar start --}}
+
+<div id="liste-actualite">
+    <div class="container">
+        <div class="inner">
+            <div class="actualite-content">
+                <div class="inner-pub1">
+                    bannière publicitaire
+                </div>
+                {{#if actualitesList.length}}
+                    {{#each actualitesList}}
+                        <div class="actualite-elm">
+                            <div class="obj">
+                                <h4>&nbsp;{{this.objetActualite}}</h4>
+                                <span>&nbsp;&nbsp;{{this.created_at}}<i class="arrow-down"></i></span>
+                            </div>
+                            <div class="content">
+                                <p>
+                                    {{this.contentActualite}}
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                    {{/each}}
+                {{/if}}
+                <div class="inner-pub2">
+                    bannière publicitaire
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- footer start --}}
+{{>footer}}
+{{!-- footer end --}}

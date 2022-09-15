@@ -1,0 +1,69 @@
+{{!-- top bar start --}}
+<div id="top-bar">
+    <div class="inner">
+        <div class="etd-fullname">
+            {{#if enseignantInfos}}
+                <h4>Bonjour Monsieur&nbsp;&nbsp;<span>{{enseignantInfos.nom}}&nbsp;{{enseignantInfos.prenom}}</span>&nbsp;&nbsp;dans votre espace personnel</h4>
+            {{/if}}
+        </div>
+        <div class="etd-email">
+            {{#if user}}
+                <h4>Utilisateur: <span>{{user.email}}</span></h4>
+                <a href="/logout-ens">Se deconnecter</a>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{!-- navigation start --}}
+<div id="docs-title">
+    <div class="inner">
+        <div class="mesdocs">
+            <a href="/documents/{{enseignantInfos.codeEnseignant}}">Mes documents</a>
+            <a href="/enseignant-demande/{{enseignantInfos.codeEnseignant}}">Effectuer une demande</a>
+            <a href="/enseignant-mesdemandes/{{enseignantInfos.codeEnseignant}}">Mes demandes</a>
+        </div>
+    </div>
+</div>
+{{!-- navigation end --}}
+
+{{!-- cours form start --}}
+<div class="cours-ens">
+    <div class="inner">
+        <div class="notif" style="text-align: center;">
+            {{>notifications}}
+        </div>
+        <div class="form-container">
+            <div class="title">
+                <h4>Publier un document</h4>
+            </div>
+            <form action="/ajt-document" method="POST" enctype="multipart/form-data">
+                <div class="file-container">
+                    <input type="file" name="doc" required>
+                </div>
+                <div class="filiere-container">
+                    <label>Choisir une filiere </label>
+                    <select name="filiere" class="filiere" required>
+                        {{#if filieresData.length}}
+                            {{#each filieresData}}
+                                <option value="{{this.codeFiliere}}">{{this.nomFiliere}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option>Liste vide...</option>
+                        {{/if}}
+                    </select>
+                    <label>Choisir l'annee</label>
+                    <select name="annee" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <input type="text" name="enseignant" value="{{enseignantInfos.codeEnseignant}}" hidden>
+                <div class="submit-container">
+                    <input type="submit" value="Publier">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{!-- cours form end --}}

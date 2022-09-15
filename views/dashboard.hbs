@@ -1,0 +1,47 @@
+{{!-- side nav partial --}}
+{{>side-nav-fix}}
+{{!-- side nav partial --}}
+
+<div class="intro-text">
+    <h1 class="dash">Dashboard</h1>
+    <h1 class="u-admin">Utilisateur : <span>{{user.email}}</span></h1>
+</div>
+
+<div class="dash-content">
+    <div class="etudiants">
+        {{!-- divs: etudiant per filiere --}}
+    </div>
+    <div class="enseignants">
+
+    </div>
+    <div class="demandes-att">
+        <h4>Demandes en attentes</h4>
+        {{!-- count des demandes where statut = 0 --}}
+    </div>
+    <section id="dashb">
+        <div class="stats">
+            <div class="stat demandes">
+                <a href="/demandes">
+                    <h4>DEMANDES NON TRAITES</h4>
+                    <p>
+                        {{demandes.length}}&nbsp;demande(s)
+                    </p>
+                </a>
+            </div>
+            {{#if etudiants.length}}
+                {{#each etudiants}}
+                    <div class="stat etudiants">
+                        <a href="/etudiants">
+                            <h4>{{this.nomFiliere}}</h4>
+                            <h4>Annee:&nbsp;{{this.annee}}</h4>
+                            <p>
+                                {{this.nombre}}&nbsp;etudiant(s)
+                            </p>
+                        </a>
+                    </div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </section>
+
+</div>

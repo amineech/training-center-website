@@ -1,0 +1,44 @@
+{{!-- nav bar start --}}
+{{>nav-bar}}
+{{!-- nav bar end --}}
+
+{{!-- contact form start --}}
+<section id="contact">
+    <div class="container">
+        <div class="inner">
+            {{!-- same css of 'filieres' title --}}
+            <div class="Title-contact">
+                <h3>Nous-contactez ?</h3>
+                <p>Laissez nous un message, on va vous répondre dés que possible</p>
+            </div>
+            <div class="form-container">
+                {{>notifications}}
+                <div class="formulaire">
+                    <h4>Formulaire de contacte</h4>
+                </div>
+                <form action="/contact-page" method="POST" class="form" autocomplete="off">
+                    <div class="Nom">
+                        <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                    </div>
+                    <div class="Prenom">
+                        <input type="text" id="prenom" name="prenom" placeholder="Prenom" required>
+                    </div>
+                    <div class="Email">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="Msg">
+                        <textarea name="message" maxlength="300" placeholder="Votre message ici..." id="message" cols="70" rows="6" required></textarea>
+                    </div>
+                    <div class="validate-btn">
+                        <input type="submit" value="Envoyer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{{!-- contact form end --}}
+
+{{!-- footer start --}}
+{{>footer}}
+{{!-- footer end --}}

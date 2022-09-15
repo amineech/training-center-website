@@ -1,0 +1,146 @@
+{{!-- side nav start--}}
+{{>side-nav}}
+{{!-- side nav end --}}
+
+<div class="enseignant-title">
+    <h2>Liste des enseignants</h2>
+</div>
+
+<div class="options-enseignant">
+        <div class="show-enseignant">
+            <button class="ajouter-enseignant-btn">Ajouter Enseignant</button>
+            <button class="supprimer-enseignant-btn">supprimer Enseignant</button>
+            <button class="modifier-enseignant-btn">modifier Enseignant</button>
+            <button class="rechercher-enseignant-module-btn">Rechercher</button>
+        </div>
+        <div>
+            {{>notifications}}
+        </div>
+</div>
+{{!-- ajouter --}}
+<div class="nouv-enseignant">
+    <div class="inner">
+        <form action="/enseignants-ajt" method="POST" class="nouv-enseignant-form">
+            <label for="">Nom</label>
+            <input type="text" maxlength="20" name="nom" required>
+            <br>
+            <label for="">Prenom</label>
+            <input type="text" maxlength="20" name="prenom" required>
+            <br>
+            <label for="">Email</label>
+            <input type="email" maxlength="50" minlength="10" name="email" required>
+            <br>
+            <label for="">Module</label>
+            <select name="module" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{else}}
+                    <option>Pas de module...</option>
+                {{/if}}
+            </select>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+</div>
+
+{{!-- modifier --}}
+<div class="modif-enseignant">
+    <div class="inner">
+        <button class="charger-btn-ens">Saisir le code Enseignant et cliquer ici pour charger ses informations</button>
+        <button class="effacer-btn-ens">Vider les champs</button>
+        <form action="/enseignants-mdf" method="POST" class="modif-enseignant-form">
+            <label for="">Code Enseignant</label>
+            <input type="text" maxlength="20" name="codeenseignant" required>
+            <br>
+            <label for="">Nom</label>
+            <input type="text" maxlength="20" name="nom" required>
+            <br>
+            <label for="">Prenom</label>
+            <input type="text" maxlength="20" name="prenom" required>
+            <br>
+            <label for="">email</label>
+            <input type="email" maxlength="50" name="email" required>
+            <br>
+            <label for="">Module</label>
+            <select name="module" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{else}}
+                {{/if}}
+            </select>
+            <br>
+            <input type="submit" value="modifier">
+        </form>
+    </div>
+</div>
+
+{{!-- supprimer --}}
+<div class="supp-enseignant">
+    <div class="inner">
+        <form action="/enseignants-sp" method="POST" class="supp-enseignant-form">
+            <label for="">code Enseignant</label>
+            <input type="text" maxlength="12" name="codeenseignant" required>
+            <br>
+            <input type="submit" value="supprimer">
+        </form>
+    </div>
+</div>
+
+{{!-- rechercher --}}
+{{!-- rechercher par filiere--}}
+<div class="rech-enseignant rech-enseignant-module">
+    <div class="inner">
+        <form class="rech-enseignant-form">
+            <label for="">Selectionnez un module</label>
+            <select class="select-enseignant-module-search" name="enseignants-modules" required>
+                {{#if modulesData.length}}
+                    {{#each modulesData}}
+                        <option value="{{this.codeModule}}">{{this.nomModule}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+        </form>
+        {{!-- cancel search --}}
+        <div class="cancel-btn">
+            <button>Annuler</button>
+        </div>
+    </div>
+</div>
+
+{{!-- liste des enseignants --}}
+<div class="table-container">
+    <table class="table-enseignants">
+        <tr>
+            <td>code Enseignant</td>
+            <td>Nom</td>
+            <td>Prenom</td>
+            <td>Email</td>
+            <td>Module enseigné</td>
+            <td>Nom utilisateur</td>
+            <td>Mot de passe</td>
+        </tr>
+        {{#if enseignantsData.length}}
+            {{#each enseignantsData}}
+            <tr>
+                <td>{{this.codeEnseignant}}</td>
+                <td>{{this.nom}}</td>
+                <td>{{this.prenom}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.module}}</td>
+                <td>{{this.utilisateur}}</td>
+                <td>{{this.password}}</td>
+            </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td colspan="7" style="text-align: center;">Pas d'enseignants</td>
+            </tr>
+        {{/if}}
+        {{!-- dynmic load goes here... --}}
+    </table>
+</div>
